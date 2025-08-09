@@ -8,6 +8,9 @@
     "lineWidth": 100,
     "attributePosition": "auto"
   },
+  "files": {
+    "includes": ["!routeTree.gen.ts"]
+  },
   "linter": {
     "enabled": true,
     "rules": {
