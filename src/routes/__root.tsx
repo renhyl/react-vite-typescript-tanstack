@@ -15,6 +15,9 @@ export const Route = createRootRoute({
         <Link to='/chapter-1' className='[&.active]:underline'>
           Chapter 1
         </Link>
+        <Link to='/chapter-2' className='[&.active]:underline'>
+          Chapter 2
+        </Link>
       </div>
       <hr />
       <div className='p-4'>
