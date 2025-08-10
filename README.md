@@ -1,4 +1,4 @@
-# React + TypeScript + Vite + TailwindCSS
+# React + TypeScript + Vite + TailwindCSS + Biome + ESLint + tw-merge + clsx
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
