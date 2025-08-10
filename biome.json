@@ -9,7 +9,7 @@
     "attributePosition": "auto"
   },
   "files": {
-    "includes": ["!routeTree.gen.ts"]
+    "includes": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "!**/routeTree.gen.ts"]
   },
   "linter": {
     "enabled": true,
@@ -21,7 +21,7 @@
     "formatter": {
       "jsxQuoteStyle": "single",
       "quoteProperties": "asNeeded",
-      "trailingCommas": "none",
+      "trailingCommas": "all",
       "semicolons": "asNeeded",
       "arrowParentheses": "always",
       "bracketSpacing": true,
@@ -32,7 +32,7 @@
   },
   "json": {
     "formatter": {
-      "trailingCommas": "none"
+      "trailingCommas": "all"
     }
   }
 }

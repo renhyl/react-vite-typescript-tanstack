@@ -13,11 +13,11 @@ export default tseslint.config([
       js.configs.recommended,
       tseslint.configs.recommended,
       reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite
+      reactRefresh.configs.vite,
     ],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser
+      globals: globals.browser,
     },
     rules: {
       'padding-line-between-statements': [
@@ -25,19 +25,19 @@ export default tseslint.config([
         {
           blankLine: 'always',
           prev: '*',
-          next: 'return'
+          next: 'return',
         },
         {
           blankLine: 'always',
           prev: ['const', 'let', 'var'],
-          next: '*'
+          next: '*',
         },
         {
           blankLine: 'any',
           prev: ['const', 'let', 'var'],
-          next: ['const', 'let', 'var']
-        }
-      ]
-    }
-  }
+          next: ['const', 'let', 'var'],
+        },
+      ],
+    },
+  },
 ])
