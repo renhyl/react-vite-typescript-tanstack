@@ -1,5 +1,5 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 interface CodeBlockProps {
   language: string
@@ -8,7 +8,7 @@ interface CodeBlockProps {
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({ language, children }) => {
   return (
-    <SyntaxHighlighter language={language} style={vscDarkPlus}>
+    <SyntaxHighlighter language={language} style={coldarkDark}>
       {children}
     </SyntaxHighlighter>
   )

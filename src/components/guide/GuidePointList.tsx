@@ -14,12 +14,14 @@ interface GuidePointListProps {
   points: (string | { title: string; content: string })[]
 }
 
+import { parseHtmlString } from '@/utils/parseHtmlString'
+
 export const GuidePointList: React.FC<GuidePointListProps> = ({ points }) => (
   <ul className='list-none pl-0'>
-    {points.map((point, index) => (
-      <GothicListItem key={index}>
+    {points.map((point) => (
+      <GothicListItem key={typeof point === 'string' ? point : `${point.title}-${point.content}`}>
         {typeof point === 'string' ? (
-          <span dangerouslySetInnerHTML={{ __html: point }} />
+          parseHtmlString(point)
         ) : (
           <>
             <strong>{point.title}</strong> {point.content}

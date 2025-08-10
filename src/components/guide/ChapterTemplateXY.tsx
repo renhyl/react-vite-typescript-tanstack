@@ -1,4 +1,4 @@
-import { ChapterContentXY } from '@/content/chapters'
+import type { ChapterContentXY } from '@/content/chapters'
 import { CelticDivider } from './CelticDivider'
 import { GuideExampleList } from './GuideExampleList'
 import { GuideHeader } from './GuideHeader'
@@ -8,9 +8,11 @@ import { GuideSection } from './GuideSection'
 import { GuideUsageScenario } from './GuideUsageScenario'
 import { CodeBlock } from './CodeBlock'
 
+import { parseHtmlString } from '@/utils/parseHtmlString'
+
 // This component is a bit of a hack to render HTML strings as React components
 const StringToReact: React.FC<{ content: string }> = ({ content }) => (
-  <div dangerouslySetInnerHTML={{ __html: content }} />
+  <div>{parseHtmlString(content)}</div>
 )
 
 export const ChapterTemplateXY: React.FC<{ data: ChapterContentXY }> = ({ data }) => (
@@ -63,13 +65,15 @@ export const ChapterTemplateXY: React.FC<{ data: ChapterContentXY }> = ({ data }
 
       <GuideSection title='Examples'>
         <GuideExampleList
-          examples={data.examples.map((e) =>
-            typeof e === 'string' ? (
-              <StringToReact content={e} />
-            ) : (
-              <CodeBlock language={e.language}>{e.code}</CodeBlock>
-            ),
-          )}
+          examples={data.examples.map((e, i) => ({
+            id: `example-${i}`,
+            content:
+              typeof e === 'string' ? (
+                <StringToReact content={e} />
+              ) : (
+                <CodeBlock language={e.language}>{e.code}</CodeBlock>
+              ),
+          }))}
         />
       </GuideSection>
 
