@@ -6,13 +6,13 @@ export const Route = createRootRoute({
   component: () => (
     <>
       <div className='p-2 flex gap-4'>
-        <Link to='/' className='[&.active]:font-bold'>
+        <Link to='/' className='[&.active]:underline'>
           Home
         </Link>
-        <Link to='/about' className='[&.active]:font-bold'>
+        <Link to='/about' className='[&.active]:underline'>
           About
         </Link>
-        <Link to='/chapter-1' className='[&.active]:font-bold'>
+        <Link to='/chapter-1' className='[&.active]:underline'>
           Chapter 1
         </Link>
       </div>
