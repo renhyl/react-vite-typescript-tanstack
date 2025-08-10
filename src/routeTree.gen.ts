@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as R404RouteImport } from './routes/404'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as Chapter1IndexRouteImport } from './routes/chapter-1/index'
 import { Route as AboutIndexRouteImport } from './routes/about/index'
 
 const R404Route = R404RouteImport.update({
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Chapter1IndexRoute = Chapter1IndexRouteImport.update({
+  id: '/chapter-1/',
+  path: '/chapter-1/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutIndexRoute = AboutIndexRouteImport.update({
   id: '/about/',
   path: '/about/',
@@ -33,30 +39,34 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutIndexRoute
+  '/chapter-1': typeof Chapter1IndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutIndexRoute
+  '/chapter-1': typeof Chapter1IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about/': typeof AboutIndexRoute
+  '/chapter-1/': typeof Chapter1IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/404' | '/about'
+  fullPaths: '/' | '/404' | '/about' | '/chapter-1'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/404' | '/about'
-  id: '__root__' | '/' | '/404' | '/about/'
+  to: '/' | '/404' | '/about' | '/chapter-1'
+  id: '__root__' | '/' | '/404' | '/about/' | '/chapter-1/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R404Route: typeof R404Route
   AboutIndexRoute: typeof AboutIndexRoute
+  Chapter1IndexRoute: typeof Chapter1IndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chapter-1/': {
+      id: '/chapter-1/'
+      path: '/chapter-1'
+      fullPath: '/chapter-1'
+      preLoaderRoute: typeof Chapter1IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/': {
       id: '/about/'
       path: '/about'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R404Route: R404Route,
   AboutIndexRoute: AboutIndexRoute,
+  Chapter1IndexRoute: Chapter1IndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
