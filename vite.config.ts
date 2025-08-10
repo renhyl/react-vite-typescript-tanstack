@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import react from '@vitejs/plugin-react-swc'
 import { defineConfig } from 'vite'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,6 +14,12 @@ export default defineConfig({
       autoCodeSplitting: true,
     }),
     react(),
+    ViteImageOptimizer({
+      // Default configuration for WebP optimization
+      webp: {
+        quality: 80,
+      },
+    }),
     tailwindcss(),
   ],
   resolve: {
